@@ -5,34 +5,45 @@ window.addEventListener("load", function(){
     return response
 });
 
-const header = document.querySelector('header')
-header.addEventListener("click", (event)=>{
-    event.target.style.backgroundColor = "salmon"
+const body = document.querySelector('body');
+body.addEventListener("mouseover", (e) => {
+   body.style.backgroundColor = "rgb("+e.clientY+","+e.clientX+",40)";
+});
+
+const header = document.querySelector('header');
+header.addEventListener("click", ()=>{
+    header.style.backgroundColor = "salmon";
 })
 
 const logo = document.querySelector('.logo-heading')
-logo.addEventListener("mouseover", ()=>{
+logo.addEventListener("mouseout", ()=>{
     logo.style.transform = "rotate(360deg)";
     logo.style.transition = "transform .5s";
 })
 
-const intro = document.querySelector('.intro p')
-intro.addEventListener('keydown', (event)=>{
-    if(event.key === 9){
-    event.target.style.fontSize = "2rem";
-}
+const intro = document.querySelector('nav a')
+intro.addEventListener('mouseup', ()=>{
+ document.querySelectorAll("p").forEach((item) => item.style.fontFamily = "Monospace");
 });
 
-const adventureImg = document.querySelectorAll('img')[1]
-adventureImg.addEventListener('dblclick',(event)=>{
+document.addEventListener('keydown', function(event) {
+    if (event.code == 'KeyZ') {
+      document.body.style.display = "none";
+    }});
+
+const mapImg = document.querySelector('img')[1]
+mapImg.addEventListener('dblclick',(event)=>{
 event.target.style.transform = "rotateZ(360deg)";
-event.target.style.transition = "transform 1s";
-event.stopPropagation();
-
+event.target.style.transition = "transform 5s";
 })
 
-const waterImg = document.querySelectorAll('img')[2]
-waterImg.addEventListener('mousemove', ()=>{
+const waterImg = document.querySelector('img')[2]
+waterImg.addEventListener('mouseenter', ()=>{
     waterImg.style.transform = "skew(360deg)";
-    waterImg.style.transition = "transform 2s"
+    waterImg.style.transition = "transform 5s"
 })
+
+const scrollEvent = document.querySelector('img')[0];
+scrollEvent.addEventListener("scroll",  () => {
+console.log(scrollEvent);
+});
